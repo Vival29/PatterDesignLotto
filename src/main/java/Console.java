@@ -1,6 +1,7 @@
 import util.ServiceLotto;
 
 import java.util.LinkedList;
+
 import java.util.Scanner;
 
 public class Console {
@@ -20,27 +21,37 @@ public class Console {
         boolean running = true;
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Aide de commande :");
-        System.out.println("Entrez \"jouerles numeros tire les uns après les autres, en validant avec la touche enter");
+        System.out.println("Entrez \"jouerles numeros tire les uns apres les autres, en validant avec la touche enter");
         System.out.println("Entrez les numeros tire les uns apres les autres, en validant avec la touche enter");
-        System.out.println("Si vous vous êtes trompé, taper \"del\", cela supprimera le dernier numero entre");
+        System.out.println("Si vous vous etes trompe, taper \"del\", cela supprimera le dernier numero entre");
         System.out.println("Lorsque vous voulez controler une QUINE taper \"v1\"");
         System.out.println("Lorsque vous voulez controler une DOUBLE-QUINE taper \"v2\"");
         System.out.println("Lorsque vous voulez controler un CARTON taper \"v3\"");
         System.out.println("__________________________________________________________________________________________");
-        System.out.println("Bonne partie de Lotto!!                           Vous jouez la partie n°: " + compteur);
+        System.out.println("Bonne partie de Lotto!!                           Vous jouez la partie no: " + compteur);
         while (running) {
             System.out.println("Entrer le numero tire, puis pressez enter");
             Scanner command = new Scanner(System.in);
             String entry = command.nextLine();
             if(isNumeric(entry)){
-                numTire.add(Integer.valueOf(entry));
-                System.out.println("Le numero " + entry + " a ete ajoute.");
-            } else {
+                if (numTire.contains(Integer.valueOf(entry))){
+                        System.out.println("Numero deja present dans la liste");
+                    System.out.println(numTire.toString());
+                    } else if ( Integer.valueOf(entry)<1 ||Integer.valueOf(entry)>99 ){
+                        System.out.println("le numero doit etre compris entre 1 et 99 inclus");
+                    System.out.println(numTire.toString());
+                    } else {
+                        numTire.add(Integer.valueOf(entry));
+                        System.out.println("Le numero " + entry + " a ete ajoute.");
+                        System.out.println(numTire.toString());
+                    }
+                } else {
 
                 switch (entry) {
                     case DEL:
                         Integer num = numTire.removeLast();
                         System.out.println("Le numero " + num + " a ete supprime de la liste.");
+                        System.out.println(numTire.toString());
                         break;
                     case QUINE:
                         System.out.println("Veuillez entrer l'id de la carte a controler: ");
