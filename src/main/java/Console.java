@@ -31,7 +31,7 @@ public class Console {
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Bonne partie de Lotto!!                           Vous jouez la partie no: " + compteur);
         while (running) {
-            System.out.println("Entrer le numero tire, pressez [ENTER] ou choisissez un mot clé");
+            System.out.println("Entrer le numero tire, pressez [ENTER] ou choisissez un mot cle");
             Scanner command = new Scanner(System.in);
             String entry = command.nextLine();
             if(isNumeric(entry)){
