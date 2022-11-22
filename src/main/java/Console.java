@@ -18,7 +18,7 @@ public class Console {
     String retour = null;
 
     public void runJeux() {
-        //TODO Apparence de sout pour que le meneur de jeu entre les numéros + indication de lettre quand veut checker, + indication de lettre quand erreur a refaire?
+        //TODO Apparence de sout pour que le meneur de jeu entre les numï¿½ros + indication de lettre quand veut checker, + indication de lettre quand erreur a refaire?
         boolean running = true;
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Aide de commande :");
@@ -61,7 +61,7 @@ public class Console {
                             System.out.println("La carte a bien une ligne complete, c'est QUINE!");
                         } else {
                             System.out.println("La carte n'est pas valide pour la QUINE");
-                            //TODO si v1 déjà atteind alors display un autre msg
+                            //TODO si v1 dÃ©ja atteind alors display un autre msg
                         }
                         break;
                     case DOUBLE_QUINE:
