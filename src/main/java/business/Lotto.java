@@ -1,14 +1,8 @@
 package business;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.json.*;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -16,8 +10,12 @@ import java.util.logging.Logger;
 
 public class Lotto {
     private final String FILENAME = "cartes.json";
+
+    public Lotto() {
+    }
+
     private static HashMap<String, Carte> cartesMap = new HashMap<>();
-    public HashMap<String, Carte> initCartes(){
+    public void initCartes(){
         try {
             JsonReader reader = Json.createReader(new FileReader(FILENAME));
                 JsonObject messageJson = reader.readObject();
@@ -50,15 +48,25 @@ public class Lotto {
                 c.setRange3(r3);
                 cartesMap.put(carte.getString("NumCarte"), c );
 
-                System.out.println("on a ajouté une carte dans notre map" + cartesMap.size());
-                System.out.println(c.toString());
+                /*System.out.println("On a ajoute une carte dans notre map" + cartesMap.size());
+                System.out.println(c.toString());*/
             }
 
         } catch (FileNotFoundException ex) {
                 Logger.getLogger(Lotto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return cartesMap;
+    }
 
+    public String getFILENAME() {
+        return FILENAME;
+    }
+
+    public static HashMap<String, Carte> getCartesMap() {
+        return cartesMap;
+    }
+
+    public static void setCartesMap(HashMap<String, Carte> cartesMap) {
+        Lotto.cartesMap = cartesMap;
     }
 }

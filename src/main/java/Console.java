@@ -2,6 +2,7 @@ import util.ServiceLotto;
 
 import java.util.LinkedList;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Console {
@@ -11,13 +12,13 @@ public class Console {
     final private String CARTON = "v3";
     final private String EXIT = "exit";
     private LinkedList<Integer> numTire = new LinkedList<>();
-    private ServiceLotto service;
+    private ServiceLotto service = new ServiceLotto();
     private int compteur = 1;
     String id = null;
     String retour = null;
 
     public void runJeux() {
-        //TODO Apparence de sout pour que le meneur de jeu entre les numÃ©ros + indication de lettre quand veut checker, + indication de lettre quand erreur a refaire?
+        //TODO Apparence de sout pour que le meneur de jeu entre les numéros + indication de lettre quand veut checker, + indication de lettre quand erreur a refaire?
         boolean running = true;
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Aide de commande :");
@@ -30,20 +31,19 @@ public class Console {
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Bonne partie de Lotto!!                           Vous jouez la partie no: " + compteur);
         while (running) {
-            System.out.println("Entrer le numero tire, puis pressez enter");
+            System.out.println("Entrer le numero tire, pressez [ENTER] puis choisissez v1, v2 ou v3");
             Scanner command = new Scanner(System.in);
             String entry = command.nextLine();
             if(isNumeric(entry)){
                 if (numTire.contains(Integer.valueOf(entry))){
                         System.out.println("Numero deja present dans la liste");
                     System.out.println(numTire.toString());
-                    } else if ( Integer.valueOf(entry)<1 ||Integer.valueOf(entry)>99 ){
-                        System.out.println("le numero doit etre compris entre 1 et 99 inclus");
+                    } else if ( Integer.parseInt(entry)<1 ||Integer.parseInt(entry)>99 ){
+                        System.out.println("Le numero doit etre compris entre 1 et 99 inclus");
                     System.out.println(numTire.toString());
                     } else {
                         numTire.add(Integer.valueOf(entry));
-                        System.out.println("Le numero " + entry + " a ete ajoute.");
-                        System.out.println(numTire.toString());
+                        System.out.println("Le numero " + entry + " a ete ajoute."+" Liste des numeros tires: " +numTire.toString());
                     }
                 } else {
 
@@ -56,33 +56,34 @@ public class Console {
                     case QUINE:
                         System.out.println("Veuillez entrer l'id de la carte a controler: ");
                         id = command.nextLine();
-                        retour = service.ckeckCarte(id, numTire);
-                        if (retour == "v1"){
-                            System.out.println("la carte Ã  bien un ligne complete, c'est QUINE!");
+                        retour = service.ckeckCarte(id, numTire); //va check le retour du check dans le retour
+                        if (Objects.equals(retour, "v1")){
+                            System.out.println("La carte a bien un ligne complete, c'est QUINE!");
                         } else {
-                            System.out.println("la carte n'est pas valide pour la QUINE");
+                            System.out.println("La carte n'est pas valide pour la QUINE");
+                            //TODO si v1 déjà atteind alors display un autre msg
                         }
                         break;
                     case DOUBLE_QUINE:
                         System.out.println("Veuillez entrer l'id de la carte a controler: ");
                         id = command.nextLine();
                         retour = service.ckeckCarte(id, numTire);
-                        if (retour == "v2"){
-                            System.out.println("la carte Ã  bien deux lignes completes, c'est DOUBLE-QUINE!");
+                        if (Objects.equals(retour, "v2")){
+                            System.out.println("La carte a bien deux lignes completes, c'est DOUBLE-QUINE!");
                         } else {
-                            System.out.println("la carte n'est pas valide pour la DOUBLE-QUINE");
+                            System.out.println("La carte n'est pas valide pour la DOUBLE-QUINE");
                         }
                         break;
                     case CARTON:
                         System.out.println("Veuillez entrer l'id de la carte a controler: ");
                         id = command.nextLine();
                         retour = service.ckeckCarte(id, numTire);
-                        if (retour == "v3"){
+                        if (Objects.equals(retour, "v3")){
                             System.out.println("la carte est complete, c'est CARTON!");
                             compteur++;
                             numTire.clear();
                         } else {
-                            System.out.println("la carte n'est pas valide pour le CARTON");
+                            System.out.println("La carte n'est pas valide pour le CARTON");
                         }
                         break;
                     case EXIT :
