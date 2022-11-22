@@ -58,7 +58,7 @@ public class Console {
                         id = command.nextLine();
                         retour = service.ckeckCarte(id, numTire); //va check le retour du check dans le retour
                         if (Objects.equals(retour, "v1")){
-                            System.out.println("La carte a bien un ligne complete, c'est QUINE!");
+                            System.out.println("La carte a bien une ligne complete, c'est QUINE!");
                         } else {
                             System.out.println("La carte n'est pas valide pour la QUINE");
                             //TODO si v1 déjà atteind alors display un autre msg
