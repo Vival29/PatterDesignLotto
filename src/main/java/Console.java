@@ -22,16 +22,16 @@ public class Console {
         boolean running = true;
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Aide de commande :");
-        System.out.println("Entrez \"jouerles numeros tire les uns apres les autres, en validant avec la touche enter");
         System.out.println("Entrez les numeros tire les uns apres les autres, en validant avec la touche enter");
         System.out.println("Si vous vous etes trompe, taper \"del\", cela supprimera le dernier numero entre");
         System.out.println("Lorsque vous voulez controler une QUINE taper \"v1\"");
         System.out.println("Lorsque vous voulez controler une DOUBLE-QUINE taper \"v2\"");
         System.out.println("Lorsque vous voulez controler un CARTON taper \"v3\"");
+        System.out.println("Si vous avez termine de jouer taper \"exit\" ");
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Bonne partie de Lotto!!                           Vous jouez la partie no: " + compteur);
         while (running) {
-            System.out.println("Entrer le numero tire, pressez [ENTER] puis choisissez v1, v2 ou v3");
+            //System.out.println("Entrer le numero tire, pressez [ENTER] ou choisissez v1, v2, v3 ou del ou exit");
             Scanner command = new Scanner(System.in);
             String entry = command.nextLine();
             if(isNumeric(entry)){
@@ -59,6 +59,7 @@ public class Console {
                         retour = service.ckeckCarte(id, numTire); //va check le retour du check dans le retour
                         if (Objects.equals(retour, "v1")){
                             System.out.println("La carte a bien une ligne complete, c'est QUINE!");
+                            System.out.println("Vous jouez maintenant pour la double quine!");
                         } else {
                             System.out.println("La carte n'est pas valide pour la QUINE");
                             //TODO si v1 déja atteind alors display un autre msg
@@ -70,6 +71,7 @@ public class Console {
                         retour = service.ckeckCarte(id, numTire);
                         if (Objects.equals(retour, "v2")){
                             System.out.println("La carte a bien deux lignes completes, c'est DOUBLE-QUINE!");
+                            System.out.println("Vous jouez maintenant pour le carton!");
                         } else {
                             System.out.println("La carte n'est pas valide pour la DOUBLE-QUINE");
                         }
@@ -79,9 +81,19 @@ public class Console {
                         id = command.nextLine();
                         retour = service.ckeckCarte(id, numTire);
                         if (Objects.equals(retour, "v3")){
-                            System.out.println("la carte est complete, c'est CARTON!");
                             compteur++;
                             numTire.clear();
+                            System.out.println("la carte est complete, c'est CARTON!");
+                            System.out.println("Debut de partie " + compteur);
+                            System.out.println("__________________________________________________________________________________________");
+                            System.out.println("Aide de commande :");
+                            System.out.println("Entrez les numeros tire les uns apres les autres, en validant avec la touche enter");
+                            System.out.println("Si vous vous etes trompe, taper \"del\", cela supprimera le dernier numero entre");
+                            System.out.println("Lorsque vous voulez controler une QUINE taper \"v1\"");
+                            System.out.println("Lorsque vous voulez controler une DOUBLE-QUINE taper \"v2\"");
+                            System.out.println("Lorsque vous voulez controler un CARTON taper \"v3\"");
+                            System.out.println("__________________________________________________________________________________________");
+                            System.out.println("Bonne partie de Lotto!!                           Vous jouez la partie no: " + compteur);
                         } else {
                             System.out.println("La carte n'est pas valide pour le CARTON");
                         }
