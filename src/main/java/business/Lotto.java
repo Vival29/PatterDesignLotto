@@ -7,22 +7,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+//classe dans laquelle on crée notre liste d'objet Carte depuis un import json
 public class Lotto {
+    //nom du fichier a importer
     private final String FILENAME = "cartes.json";
 
     public Lotto() {
     }
 
     private static HashMap<String, Carte> cartesMap = new HashMap<>();
+    // méthode de Lotto qui initalise la liste de type Map depuis le fichier json
     public void initCartes(){
         try {
+            //créer le reader qui va lire le fichier json
             JsonReader reader = Json.createReader(new FileReader(FILENAME));
-                JsonObject messageJson = reader.readObject();
-                JsonArray cartesImport = messageJson.getJsonArray("cartes");
+            // crée l'objet json messsageJson
+            JsonObject messageJson = reader.readObject();
+            //Extraire le tableau cartesImport de cet objet json, c'est un tableau de cartes
+            JsonArray cartesImport = messageJson.getJsonArray("cartes");
 
-
+            //pour chacune des cartes de ce tableau, on transforme Rangee1/Rangee2/Rangee3 d'une String à un tableau de Integer
             for(JsonObject carte : cartesImport.getValuesAs(JsonObject.class)) {
+                //instantiation d'un nouvel objet carte
                 Carte c = new Carte();
 
                 String str1 = carte.getString("Rangee1");
@@ -43,9 +49,11 @@ public class Lotto {
                 for(String s3: tabS3){
                     r3.add(Integer.parseInt(s3));
                 }
+                //attribution des éléments importé et modifié du json dans l'objet Carte.
                 c.setRange1(r1);
                 c.setRange2(r2);
                 c.setRange3(r3);
+                //utilisation de l'id de la carte comme Key dans notre liste Map, et Carte dans value.
                 cartesMap.put(carte.getString("NumCarte"), c );
 
                 /*System.out.println("On a ajoute une carte dans notre map" + cartesMap.size());
