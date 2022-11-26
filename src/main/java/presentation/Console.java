@@ -1,3 +1,5 @@
+package presentation;
+
 import util.ServiceLotto;
 
 import java.util.LinkedList;
@@ -22,7 +24,7 @@ public class Console {
         boolean running = true;
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Aide de commande :");
-        System.out.println("Entrez les numeros tire les uns apres les autres, en validant avec la touche enter");
+        System.out.println("Entrez les numéros tire les uns après les autres, en validant avec la touche [Enter]");
         System.out.println("Si vous vous etes trompe, taper \"del\", cela supprimera le dernier numero entre");
         System.out.println("Lorsque vous voulez controler une QUINE taper \"v1\"");
         System.out.println("Lorsque vous voulez controler une DOUBLE-QUINE taper \"v2\"");
@@ -31,30 +33,30 @@ public class Console {
         System.out.println("__________________________________________________________________________________________");
         System.out.println("Bonne partie de Lotto!!                           Vous jouez la partie no: " + compteur);
         while (running) {
-            System.out.println("Entrer le numero tire, pressez [ENTER] ou choisissez un mot cle");
+            System.out.println("Entrer le numéro tire, pressez [ENTER] ou choisissez un mot clé");
             Scanner command = new Scanner(System.in);
             String entry = command.nextLine();
             if(isNumeric(entry)){
                 if (numTire.contains(Integer.valueOf(entry))){
-                        System.out.println("Numero deja present dans la liste");
+                        System.out.println("Numéro déjà présent dans la liste");
                     System.out.println(numTire.toString());
                     } else if ( Integer.parseInt(entry)<1 ||Integer.parseInt(entry)>99 ){
-                        System.out.println("Le numero doit etre compris entre 1 et 99 inclus");
+                        System.out.println("Le numéro doit être compris entre 1 et 99 inclus");
                     System.out.println(numTire.toString());
                     } else {
                         numTire.add(Integer.valueOf(entry));
-                        System.out.println("Le numero " + entry + " a ete ajoute."+" Liste des numeros tires: " +numTire.toString());
+                        System.out.println("Le numéro " + entry + " a été ajouté."+" Liste des numéros tirés: " +numTire.toString());
                     }
                 } else {
 
                 switch (entry) {
                     case DEL:
                         Integer num = numTire.removeLast();
-                        System.out.println("Le numero " + num + " a ete supprime de la liste.");
+                        System.out.println("Le numéro " + num + " a été supprimé de la liste.");
                         System.out.println(numTire.toString());
                         break;
                     case QUINE:
-                        System.out.println("Veuillez entrer l'id de la carte a controler: ");
+                        System.out.println("Veuillez entrer l'id de la carte a contrôler: ");
                         id = command.nextLine();
                         retour = service.ckeckCarte(id, numTire); //va check le retour du check dans le retour
                         if (Objects.equals(retour, "v1")){

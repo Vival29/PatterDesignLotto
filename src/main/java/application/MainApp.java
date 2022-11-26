@@ -1,4 +1,7 @@
+package application;
+
 import business.Lotto;
+import presentation.Console;
 
 public class MainApp {
     public static void main(String[] args) {
