@@ -24,16 +24,16 @@ public class Console {
         boolean running = true;
         System.out.println(".__________________________________________________________________________________________.");
         System.out.println("| Aide de commande :                                                                       |");
-        System.out.println("| Entrez les numéros tire les uns après les autres, en validant avec la touche [Enter]     |");
-        System.out.println("| Si vous vous etes trompe, taper \"del\", cela supprimera le dernier numero entre         |");
-        System.out.println("| Lorsque vous voulez controler une QUINE taper \"v1\"                                     |");
-        System.out.println("| Lorsque vous voulez controler une DOUBLE-QUINE taper \"v2\"                              |");
-        System.out.println("| Lorsque vous voulez controler un CARTON taper \"v3\"                                     |");
-        System.out.println("| Si vous avez termine de jouer taper \"exit\"                                             |");
+        System.out.println("| Entrez les numeros tire les uns apres les autres, en validant avec la touche [Enter]     |");
+        System.out.println("| Si vous vous etes trompe, taper \"del\", cela supprimera le dernier numero entre           |");
+        System.out.println("| Lorsque vous voulez controler une QUINE taper \"v1\"                                       |");
+        System.out.println("| Lorsque vous voulez controler une DOUBLE-QUINE taper \"v2\"                                |");
+        System.out.println("| Lorsque vous voulez controler un CARTON taper \"v3\"                                       |");
+        System.out.println("| Si vous avez termine de jouer taper \"exit\"                                               |");
         System.out.println("|__________________________________________________________________________________________|");
         System.out.println("Bonne partie de Lotto!!                           Vous jouez la partie no: " + compteur);
         while (running) {
-            System.out.println("Entrer le numéro tire, pressez [ENTER] ou choisissez un mot clé");
+            System.out.println("Entrer le numero tire, pressez [ENTER] ou choisissez un mot cle");
             Scanner command = new Scanner(System.in);
             String entry = command.nextLine();
             //vérifie si la commande entré dans la console est un nombre avec la méthode isNumeric, dans ce cas la inscrit le nombre dans la liste, Sinon passe en mode switch avec les constantes
