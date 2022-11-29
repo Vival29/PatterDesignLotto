@@ -40,14 +40,14 @@ public class Console {
             if(isNumeric(entry)){
                 //Dans le cas ou le nombre est déja présent dans la liste, il affiche dansla console qu'il est déja présent. Si le nbombre n'est pas compris entre 1 et 99 il affiche qu'il dit etre compris entre 1 et 99 sinon il entre le num dans la liste.
                 if (numTire.contains(Integer.valueOf(entry))){
-                        System.out.println("Numéro déjà présent dans la liste");
+                        System.out.println("Numero deja present dans la liste");
                     System.out.println(numTire.toString());
                     } else if ( Integer.parseInt(entry)<1 ||Integer.parseInt(entry)>99 ){
-                        System.out.println("Le numéro doit être compris entre 1 et 99 inclus");
+                        System.out.println("Le numero doit etre compris entre 1 et 99 inclus");
                     System.out.println(numTire.toString());
                     } else {
                         numTire.add(Integer.valueOf(entry));
-                        System.out.println("Le numéro " + entry + " a été ajouté."+" Liste des numéros tirés: " +numTire.toString());
+                        System.out.println("Le numero " + entry + " a ete ajoute."+" Liste des numeros tires: " +numTire.toString());
                     }
                 } else {
                 // si ce n'est pas un numero alors il check que cela soit une des commandes constantes.
@@ -55,12 +55,12 @@ public class Console {
                     // dans le cas ou le crieur s'est trompé il peut supprimer la dernière entré (ou celle d'avant) en LIFO
                     case DEL:
                         Integer num = numTire.removeLast();
-                        System.out.println("Le numéro " + num + " a été supprimé de la liste.");
+                        System.out.println("Le numero " + num + " a ete supprime de la liste.");
                         System.out.println(numTire.toString());
                         break;
                     case QUINE:
                         //verifie la quine en demandant l'id
-                        System.out.println("Veuillez entrer l'id de la carte a contrôler: ");
+                        System.out.println("Veuillez entrer l'id de la carte a controler: ");
                         id = command.nextLine();
                         //retour est un string qui sera soit v1, v2, v3 ou rien. Dans le cas de la quine on voudrait que ce soit v1 alors c'est ce que l'on verifie.
                         retour = service.ckeckCarte(id, numTire);
@@ -96,12 +96,12 @@ public class Console {
                             System.out.println("Debut de partie " + compteur);
                             System.out.println(".__________________________________________________________________________________________.");
                             System.out.println("| Aide de commande :                                                                       |");
-                            System.out.println("| Entrez les numéros tire les uns après les autres, en validant avec la touche [Enter]     |");
-                            System.out.println("| Si vous vous etes trompe, taper \"del\", cela supprimera le dernier numero entre         |");
-                            System.out.println("| Lorsque vous voulez controler une QUINE taper \"v1\"                                     |");
-                            System.out.println("| Lorsque vous voulez controler une DOUBLE-QUINE taper \"v2\"                              |");
-                            System.out.println("| Lorsque vous voulez controler un CARTON taper \"v3\"                                     |");
-                            System.out.println("| Si vous avez termine de jouer taper \"exit\"                                             |");
+                            System.out.println("| Entrez les numeros tire les uns apres les autres, en validant avec la touche [Enter]     |");
+                            System.out.println("| Si vous vous etes trompe, taper \"del\", cela supprimera le dernier numero entre           |");
+                            System.out.println("| Lorsque vous voulez controler une QUINE taper \"v1\"                                       |");
+                            System.out.println("| Lorsque vous voulez controler une DOUBLE-QUINE taper \"v2\"                                |");
+                            System.out.println("| Lorsque vous voulez controler un CARTON taper \"v3\"                                       |");
+                            System.out.println("| Si vous avez termine de jouer taper \"exit\"                                               |");
                             System.out.println("|__________________________________________________________________________________________|");
                             System.out.println("Bonne partie de Lotto!!                                     Vous jouez la partie no: " + compteur);
                         } else {
